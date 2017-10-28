@@ -80,7 +80,7 @@ class Level(object):
         for data in packets_of_size(packet_size, self.lumps['LINEDEFS']):
             self.lines.append(Line(data))
 
-    def save_svg(self):
+    def save_svg(self, my_lines):
         """ Scale the drawing to fit inside a 1024x1024 canvas (iPhones don't like really large SVGs even if they have the same detail) """
         import svgwrite
         view_box_size = self.normalize(self.upper_right, 10)
@@ -94,11 +94,21 @@ class Level(object):
                                viewBox=('0 0 %d %d' % view_box_size))
         for line in self.lines:
             a = self.normalize(self.vertices[line.a])
+            # print type(self.vertices[line.a])
             b = self.normalize(self.vertices[line.b])
             if line.is_one_sided():
                 dwg.add(dwg.line(a, b, stroke='#333', stroke_width=1))
             else:
                 dwg.add(dwg.line(a, b, stroke='#999', stroke_width=1))
+
+        for line in my_lines:
+            # print len(my_lines)
+            a = self.normalize(tuple(line[0]))
+            print tuple(line[0])
+            b = self.normalize(tuple(line[1]))
+            dwg.add(dwg.line(a, b, stroke='#999', stroke_width=10))
+            dwg.add(dwg.circle(a, r=1, stroke='#00f'))
+            dwg.add(dwg.circle(b, r=10, stroke='#0000FF'))
 
         dwg.save()
 

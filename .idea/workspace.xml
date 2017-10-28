@@ -2,89 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd22f444-345c-4898-adbc-108d420f62e9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/aima3e_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/aima_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/bayesnet.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/dirt05-icon.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/knn_plot.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/mdp-a.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/mdp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/sprinklernet.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/vacuum-icon.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/wall-icon.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/.gitmodules" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/.idea/aima.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/CONTRIBUTING.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/agents.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/agents.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/canvas.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/csp.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/csp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/games.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/games.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/grid.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/grid.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/IMAGE-CREDITS" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/dirt.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/fig_5_2.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/search_animal.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/images/vacuum.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/index.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/intro.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/ipyviews.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/js/canvas.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/js/continuousworld.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/js/gridworld.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/learning.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/learning.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/logic.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/logic.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/mdp.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/mdp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/nlp.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/nlp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/planning.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/planning.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/probability-4e.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/probability.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/probability.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/requirements.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/rl.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/rl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/search-4e.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/search.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/search.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_csp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_games.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_grid.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_learning.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_logic.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_mdp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_nlp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_planning.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_probability.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_search.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_text.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/tests/test_utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/text.ipynb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/text.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/aima/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/seearch_the_graph.py" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/py-wad2json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/E1M1.svg" afterPath="$PROJECT_DIR$/E1M1.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/graph.py" afterPath="$PROJECT_DIR$/graph.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mapper.py" afterPath="$PROJECT_DIR$/mapper.py" />
     </list>
     <ignored path="doom-bot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,10 +20,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/doom-bot$seearch_the_graph.coverage" NAME="seearch_the_graph Coverage Results" MODIFIED="1509219015158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/doom-bot$seearch_the_graph.coverage" NAME="seearch_the_graph Coverage Results" MODIFIED="1509221873456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/doom-bot$mapper.coverage" NAME="mapper Coverage Results" MODIFIED="1509202324806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/doom-bot$main.coverage" NAME="main Coverage Results" MODIFIED="1509202415864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/doom-bot$graph.coverage" NAME="graph Coverage Results" MODIFIED="1509218441151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/doom-bot$graph.coverage" NAME="graph Coverage Results" MODIFIED="1509225270810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -126,8 +49,8 @@
       <file leaf-file-name="mapper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="98" column="51" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="51" />
+            <state relative-caret-position="46">
+              <caret line="110" column="38" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
               <folding>
                 <element signature="e#24#33#0" expanded="true" />
               </folding>
@@ -138,18 +61,38 @@
       <file leaf-file-name="graph.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+            <state relative-caret-position="72">
+              <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seearch_the_graph.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="spin_and_shoot.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spin_and_shoot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-202">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spin_and_shoot_and_move.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spin_and_shoot_and_move.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-436">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="seearch_the_graph.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seearch_the_graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
+            <state relative-caret-position="176">
+              <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
               </folding>
@@ -177,21 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="numeric.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/core/numeric.py">
+      <file leaf-file-name="E1M1.svg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/E1M1.svg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6606">
-              <caret line="380" column="0" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fromnumeric.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33840">
-              <caret line="1891" column="4" selection-start-line="1891" selection-start-column="4" selection-end-line="1891" selection-end-column="4" />
+            <state relative-caret-position="0">
+              <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -200,18 +133,8 @@
       <file leaf-file-name="__builtin__.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.PyCharm2016.2/system/python_stubs/-1247972723/__builtin__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="convert_image.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/convert_image.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="470">
+              <caret line="3326" column="8" selection-start-line="3326" selection-start-column="8" selection-end-line="3326" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -233,11 +156,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/mapper.py" />
-        <option value="$PROJECT_DIR$/graph.py" />
         <option value="$PROJECT_DIR$/search.py" />
         <option value="$PROJECT_DIR$/aima/__init__.py" />
         <option value="$PROJECT_DIR$/seearch_the_graph.py" />
+        <option value="$PROJECT_DIR$/mapper.py" />
+        <option value="$PROJECT_DIR$/graph.py" />
       </list>
     </option>
   </component>
@@ -313,7 +236,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.seearch_the_graph">
+  <component name="RunManager" selected="Python.graph">
     <configuration default="false" name="mapper" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -613,8 +536,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.seearch_the_graph" />
-        <item index="1" class="java.lang.String" itemvalue="Python.graph" />
+        <item index="0" class="java.lang.String" itemvalue="Python.graph" />
+        <item index="1" class="java.lang.String" itemvalue="Python.seearch_the_graph" />
         <item index="2" class="java.lang.String" itemvalue="Python.main" />
         <item index="3" class="java.lang.String" itemvalue="Python.mapper" />
       </list>
@@ -687,18 +610,30 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/graph.py</url>
-          <line>110</line>
+          <line>178</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/graph.py</url>
-          <line>56</line>
+          <line>94</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/graph.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="7" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="node" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
@@ -961,22 +896,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/E1M1.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2016.2/system/python_stubs/-1247972723/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/core/fromnumeric.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33840">
@@ -1017,6 +936,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/aima/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2016.2/system/python_stubs/-1247972723/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="3326" column="8" selection-start-line="3326" selection-start-column="8" selection-end-line="3326" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/E1M1.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1027,39 +970,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aima/__init__.py">
+    <entry file="file://$PROJECT_DIR$/seearch_the_graph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-          <folding />
+        <state relative-caret-position="176">
+          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#67#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mapper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="98" column="51" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="51" />
+        <state relative-caret-position="46">
+          <caret line="110" column="38" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
           <folding>
             <element signature="e#24#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seearch_the_graph.py">
+    <entry file="file://$PROJECT_DIR$/graph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#67#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="72">
+          <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spin_and_shoot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-202">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spin_and_shoot_and_move.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-436">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
