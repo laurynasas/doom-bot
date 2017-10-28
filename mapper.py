@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-import struct
 import re
+import struct
+
+import wand
 
 
 class Wad(object):
@@ -81,11 +83,12 @@ class Level(object):
         """ Scale the drawing to fit inside a 1024x1024 canvas (iPhones don't like really large SVGs even if they have the same detail) """
         import svgwrite
         view_box_size = self.normalize(self.upper_right, 10)
-        if view_box_size[0] > view_box_size[1]:
-            canvas_size = (1024, int(1024 * (float(view_box_size[1]) / view_box_size[0])))
-        else:
-            canvas_size = (int(1024 * (float(view_box_size[0]) / view_box_size[1])), 1024)
-
+        print view_box_size
+        # if view_box_size[0] > view_box_size[1]:
+        #     canvas_size = (1024, int(1024 * (float(view_box_size[1]) / view_box_size[0]) ) )
+        # else:
+        #     canvas_size = (int(1024 * (float(view_box_size[0]) / view_box_size[1])), 1024)
+        canvas_size = view_box_size
         dwg = svgwrite.Drawing(self.name + '.svg', profile='tiny', size=canvas_size,
                                viewBox=('0 0 %d %d' % view_box_size))
         for line in self.lines:
@@ -120,7 +123,25 @@ def packets_of_size(n, data):
 
 
 if __name__ == "__main__":
-
     wad = Wad("./Doom1.WAD")
-    for level in wad.levels:
-        level.save_svg()
+    level_1 = wad.levels[0]
+    svg_name = level_1.name
+    level_1.save_svg()
+    svg_file = open(svg_name + ".svg")
+
+    print "Have the image ====="
+
+    from wand.api import library
+    import wand.color
+    import wand.image
+
+    with wand.image.Image() as image:
+        with wand.color.Color('transparent') as background_color:
+            library.MagickSetBackgroundColor(image.wand,
+                                             background_color.resource)
+        image.read(blob=svg_file.read())
+        png_image = image.make_blob("png32")
+
+
+    with open(svg_name + ".png", "wb") as out:
+        out.write(png_image)
