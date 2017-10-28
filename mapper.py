@@ -2,8 +2,9 @@
 
 import re
 import struct
+from PIL import Image
 
-import wand
+import numpy as np
 
 
 class Wad(object):
@@ -142,6 +143,18 @@ if __name__ == "__main__":
         image.read(blob=svg_file.read())
         png_image = image.make_blob("png32")
 
-
     with open(svg_name + ".png", "wb") as out:
         out.write(png_image)
+
+    colours = {
+        str([153, 153, 153]): 1,
+        str([52, 52, 52]): -1,
+        str([0, 0, 0]): 0
+
+    }
+    img = Image.open(svg_name + ".png").convert('RGB')
+    arr = np.array(img)
+    for i,el in enumerate(arr):
+        for j,ell in enumerate(el):
+            arr[i][j] = colours[str(list(ell)]
+            print arr[i][j]
