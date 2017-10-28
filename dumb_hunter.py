@@ -8,7 +8,7 @@ import time
 import requests
 
 RESTFUL_HOST = "localhost"
-RESTFUL_PORT = 6001
+RESTFUL_PORT = 6666
 
 
 def sendAction(objectName, payload):
@@ -227,9 +227,9 @@ def reorientPlayer(angle, attempts=10, pause=1, accuracy=10):
     return False
 
 
-logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=logging.DEBUG)
-
-enemy = findNearestEnemy()
-print json.dumps(enemy, indent=4)
-moveToPoint(enemy["position"]["x"], enemy["position"]["y"])
-shoot()
+# logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=logging.DEBUG)
+#
+# enemy = findNearestEnemy()
+# print json.dumps(enemy, indent=4)
+# moveToPoint(enemy["position"]["x"], enemy["position"]["y"])
+# shoot()
