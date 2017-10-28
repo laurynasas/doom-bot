@@ -39,7 +39,7 @@ class Helper:
     @staticmethod
     def is_node_reachable(vertex, one_sided_lines):
         for line in one_sided_lines:
-            if Helper.intersect(vertex.start_node, vertex.end_node, line.a, line.b):
+            if Helper.do_intersect((vertex.start_node.x, vertex.start_node.y), (vertex.end_node.x, vertex.end_node.y), (line.a.x, line.a.y), (line.b.x, line.b.y)):
                 vertex.end_node.reachable = False
                 return False
         vertex.end_node.reachable = True
@@ -95,6 +95,52 @@ class Helper:
     @classmethod
     def intersect(cls, A, B, C, D):
         return cls.ccw(A, C, D) != cls.ccw(B, C, D) and cls.ccw(A, B, C) != cls.ccw(A, B, D)
+
+    @classmethod
+    def on_segment(p, q, r):
+        onSegment = False
+        if q[0] <= max(p[0], r[0]) and q[0] >= min(p[0], r[0]) and q[1] <= max(p[1], r[1]) and q[1] >= min(p[1], r[1]):
+            onSegment = True
+        return onSegment
+
+    @classmethod
+    def orientation(p, q, r):
+        orientation = -1
+        val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1])
+        if val == 0:
+            orientation = 0 # co-linear
+        if val > 0:
+            orientation = 1 # clockwise
+        if val < 0:
+            orientation = 2 # counter clockwise
+        return orientation
+
+    @classmethod
+    def do_intersect(p1, q1, p2, q2):
+        do_intersect = False
+
+        o1 = Helper.orientation(p1, q1, p2)
+        o2 = Helper.orientation(p1, q1, q2)
+        o3 = Helper.orientation(p2, q2, p1)
+        o4 = Helper.orientation(p2, q2, q1)
+
+        if o1 != o2 and o3 != o4:
+            do_intersect = True # general case
+
+        if o1 == 0 and Helper.on_segment(p1, p2, q1):
+            do_intersect = True
+
+        if o2 == 0 and Helper.on_segment(p1, q2, q1):
+            do_intersect = True
+
+        if o3 == 0 and Helper.on_segment(p2, p1, q2):
+            do_intersect = True
+
+        if o4 == 0 and Helper.on_segment(p2, p1, q2):
+            do_intersect = True
+
+        return do_intersect
+
 
 
 class Graph:
@@ -152,15 +198,17 @@ if __name__ == "__main__":
 
     graph = Graph()
     graph.append_node(init_node)
-    print helper.map_out_graph(init_node, lines, vertex_length, graph, Directions.SOUTH)
+    # print helper.map_out_graph(init_node, lines, vertex_length, graph, Directions.SOUTH)
 
     # line_1 = Line([0, 0], [5, 5], True)
-    # node_1 = Node(4, 2)
-    # node_2 = Node(1, 4)
+    node_1 = Node(init_node.x, init_node.y + vertex_length)
+    node_2 = Node(init_node.x, init_node.y + vertex_length)
     # node_3 = Node(5, 3)
     # node_4 = Node(6, 4)
     # node_5 = Node(5, 6)
     # node_6 = Node(7, 5)
     # node_7 = Node(5, 7)
-    #
-    # print Helper.is_node_reachable(Vertex(node_6, node_7), [line_1])
+
+    print Helper.is_node_reachable(Vertex(init_node, node_1), lines)
+
+    print len(lines)
