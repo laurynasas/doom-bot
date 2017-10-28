@@ -180,6 +180,8 @@ def enum(**enums):
     return type('Enum', (), enums)
 
 
+
+
 if __name__ == "__main__":
 
     from mapper import Wad
@@ -213,7 +215,7 @@ if __name__ == "__main__":
     graph.append_node(init_node)
     my_lines, all_nodes, all_vertices = helper.map_out_graph(init_node, lines, vertex_length, graph, Directions.SOUTH)
     agent = Agent()
-    agent.get_state_space(all_nodes, all_nodes[0], all_nodes[(len(all_nodes) / 2) + 250], vertex_length, all_vertices,
+    agent.get_state_space(all_nodes, all_nodes[0], all_nodes[(len(all_nodes) / 2) + 250], vertex_length,
                           lines)
     (solution_path, start_location, goal_location, maze_map_locations) = agent.find_solution_path()
     print solution_path
