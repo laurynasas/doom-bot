@@ -10,6 +10,7 @@ from dumb_hunter import movePlayer, get_position
 if __name__ == "__main__":
 
     init_postion = get_position()
+    print init_postion
     # url = 'http://{}:{}/api/player/actions'.format(RESTFUL_HOST, RESTFUL_PORT)
     # payload = {"type": "forward", "amount": 100}
     # logging.warn('Calling {} with payload {}'.format(url, payload))

@@ -206,7 +206,7 @@ if __name__ == "__main__":
         lines_y.extend([line.a.y, line.b.y])
 
     helper = Helper()
-    start_pos = [1056, -3516]
+    start_pos = [1056, -3616]
     vertex_length = 70
     player = Player(*start_pos)
     init_node = Node(player.x, player.y)
