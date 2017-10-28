@@ -27,7 +27,7 @@ class Wad(object):
                 filepos = struct.unpack("<I", lump[0:4])[0] - header_size
                 size = struct.unpack("<I", lump[4:8])[0]
                 name = lump[8:16].decode('UTF-8').rstrip('\0')
-                print(name)
+                # print(name)
                 if (re.match('E\dM\d|MAP\d\d', name)):
                     # Level nodes are named things like E1M1 or MAP01
                     if (current_level.is_valid()):
@@ -146,15 +146,28 @@ if __name__ == "__main__":
     with open(svg_name + ".png", "wb") as out:
         out.write(png_image)
 
-    colours = {
-        str([153, 153, 153]): 1,
-        str([52, 52, 52]): -1,
-        str([0, 0, 0]): 0
-
-    }
+    # colours = {
+    #     str([153,153,153]): 1,
+    #     str([52,52,52]): -1,
+    #     str([0,0,0]): 0
+    #
+    # }
     img = Image.open(svg_name + ".png").convert('RGB')
     arr = np.array(img)
-    for i,el in enumerate(arr):
-        for j,ell in enumerate(el):
-            arr[i][j] = colours[str(list(ell)]
-            print arr[i][j]
+
+
+    # new_arr = np.zeros((arr.shape[0], arr.shape[1]), dtype=np.int8)
+    # counter = 0
+    # for i,el in enumerate(arr):
+    #     for j,ell in enumerate(el):
+    #         counter += 1
+    #         if counter %100000 == 0:
+    #             print counter
+    #         # print str(list(ell))
+    #         # print str([0, 0, 0])
+    #         if str(list(ell)) == str([120, 120, 120]) or str(list(ell)) == str([140, 140, 140]):
+    #             ell = np.array([153,153,153])
+    #         new_arr[i,j] = colours[str(list(ell))]
+    #         # np.put(arr, [i,j], colours[str(list(ell))])
+    #         # print new_arr[i,j], arr[i,j]
+    # print new_arr
