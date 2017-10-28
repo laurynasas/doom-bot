@@ -101,11 +101,11 @@ if __name__ == "__main__":
 
     helper = Helper()
     start_pos = [1056, 3616]
-    vertex_length = 100
+    vertex_length = 1000
     player = Player(*start_pos)
     init_node = Node(player.x, player.y)
 
-    sys.setrecursionlimit(150000)
+    sys.setrecursionlimit(15000)
 
     graph = Graph()
     print helper.map_out_graph(init_node, MAP_WIDTH, MAP_LENGTH, vertex_length, graph)
