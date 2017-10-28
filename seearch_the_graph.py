@@ -86,9 +86,10 @@ if __name__ == "__main__":
     agent = Agent()
     init = Node(1, 1)
     goal = Node(4, 7)
-    all_nodes = [init, Node(1, 2), Node(1, 3), Node(2, 1), Node(2, 2), Node(2, 3), Node(3, 3), Node(3, 4), Node(2, 4),
-                 Node(2, 5), Node(2, 6), Node(2, 7), Node(1, 7), Node(3, 7), Node(4, 7), Node(4, 6), Node(4, 5),
-                 Node(4, 4), goal]
+    # all_nodes = [init, Node(1, 2), Node(1, 3), Node(2, 1), Node(2, 2), Node(2, 3), Node(3, 3), Node(3, 4), Node(2, 4),
+    #              Node(2, 5), Node(2, 6), Node(2, 7), Node(1, 7), Node(3, 7), Node(4, 7), Node(4, 6), Node(4, 5),
+    #              Node(4, 4), goal]
+
 
     agent.get_state_space(all_nodes, init, goal, 1)
     (solution_path, start_location, goal_location, maze_map_locations) = agent.find_solution_path()
