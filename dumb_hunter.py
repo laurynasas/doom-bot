@@ -25,6 +25,12 @@ def sendAction(objectName, payload):
         return False
 
 
+def get_position():
+    currentData = getAction('player')
+
+    return (currentData["position"]["x"], currentData["position"]["y"])
+
+
 def getAction(objectName):
     global RESTFUL_HOST
     global RESTFUL_PORT
@@ -225,7 +231,6 @@ def reorientPlayer(angle, attempts=10, pause=1, accuracy=10):
     logging.debug('Gave up - angle is {} vs {}'.format(currentData["angle"], angle))
 
     return False
-
 
 # logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=logging.DEBUG)
 #

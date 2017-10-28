@@ -221,4 +221,11 @@ if __name__ == "__main__":
     print solution_path
 
     solution_path = [Node(int(el.state.split(" | ")[0]), int(el.state.split(" | ")[1])) for el in solution_path]
+
+    write_to = open("solution_path.txt", 'w')
+
+    with write_to:
+        for node in solution_path:
+            write_to.write(str(node) + "\n")
+
     level_1.save_svg(my_lines, my_path=solution_path)
