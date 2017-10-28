@@ -1,5 +1,5 @@
 from aima.search import UndirectedGraph, GraphProblem, astar_search
-from graph import Node
+from graph import Node, Helper, Vertex
 
 
 class StateSpace(object):
@@ -29,7 +29,7 @@ class Agent:
     def __init__(self):
         self.state_space = StateSpace()
 
-    def get_state_space(self, all_nodes, init_node, goal_node, vertex_length):
+    def get_state_space(self, all_nodes, init_node, goal_node, vertex_length, one_sided_lines):
         state_space_locations = {}  # create a dict
 
         for node in all_nodes:
@@ -44,9 +44,14 @@ class Agent:
         for state_id in state_space_locations:
             possible_states = {}
             for action in actions:
+
                 delta = actions.get(action)
                 state_loc = state_space_locations.get(state_id)
                 state_loc_post_action = [state_loc[0] + delta[0], state_loc[1] + delta[1]]
+                if not Helper.is_node_reachable(Vertex(Node(state_loc[0], state_loc[1]),
+                                                       Node(state_loc[0] + delta[0], state_loc[1] + delta[1])),
+                                                one_sided_lines):
+                    continue
                 state_id_post_action = Node(str(state_loc_post_action[0]), str(state_loc_post_action[1])).__str__()
                 if state_space_locations.get(state_id_post_action) != None:
                     possible_states[state_id_post_action] = 1
@@ -80,17 +85,3 @@ class Agent:
             solution_path.append(parent_node)
 
         return solution_path, start_location, goal_location, maze_map_locations
-
-
-if __name__ == "__main__":
-    agent = Agent()
-    init = Node(1, 1)
-    goal = Node(4, 7)
-    # all_nodes = [init, Node(1, 2), Node(1, 3), Node(2, 1), Node(2, 2), Node(2, 3), Node(3, 3), Node(3, 4), Node(2, 4),
-    #              Node(2, 5), Node(2, 6), Node(2, 7), Node(1, 7), Node(3, 7), Node(4, 7), Node(4, 6), Node(4, 5),
-    #              Node(4, 4), goal]
-
-
-    agent.get_state_space(all_nodes, init, goal, 1)
-    (solution_path, start_location, goal_location, maze_map_locations) = agent.find_solution_path()
-    print solution_path

@@ -47,16 +47,23 @@ class Helper:
         return True
 
     @staticmethod
-    def map_out_graph(node, lines, vertex_length, graph, came_from, counter=0, my_lines=[], all_nodes=[], all_vertices =[]):
+    def does_vertex_exist(all_vertices, start_coord, end_coord):
+        for vertex in all_vertices:
+            vector_1 = [abs(start_coord[0] - end_coord[0]), abs(start_coord[1] - end_coord[1])]
+            vector_2 = [abs(vertex.start_node.x - vertex.end_node.x), abs(vertex.start_node.y - vertex.end_node.y)]
+            if (vector_1[0] - vector_2[0] == 0) and (vector_1[1] - vector_2[1] == 0):
+                print "exists"
+                return True
+        return False
+
+    @staticmethod
+    def map_out_graph(node, lines, vertex_length, graph, came_from, my_lines=[], all_nodes=[],
+                      all_vertices=[]):
         all_nodes.append(node)
         candidate_to_the_north = Node(node.x, node.y + vertex_length)
         candidate_to_the_west = Node(node.x - vertex_length, node.y)
         candidate_to_the_east = Node(node.x + vertex_length, node.y)
         candidate_to_the_south = Node(node.x, node.y - vertex_length)
-        counter += 1
-        # if counter > 15:
-        #     print "will return"
-        #     return my_lines
 
         if Helper.is_node_reachable(Vertex(node, candidate_to_the_north), lines) and came_from is not Directions.NORTH:
             all_vertices.append(Vertex(node, candidate_to_the_north))
@@ -65,7 +72,7 @@ class Helper:
                 graph.append_node(candidate_to_the_north)
                 print "Appended upwards " + candidate_to_the_north.__str__()
 
-                Helper.map_out_graph(candidate_to_the_north, lines, vertex_length, graph, Directions.SOUTH, counter,
+                Helper.map_out_graph(candidate_to_the_north, lines, vertex_length, graph, Directions.SOUTH,
                                      my_lines=my_lines, all_nodes=all_nodes)
             else:
                 print "Node already mapped " + candidate_to_the_north.__str__()
@@ -106,15 +113,6 @@ class Helper:
                 print "Node already mapped " + candidate_to_the_south.__str__()
 
         return my_lines, all_nodes, all_vertices
-
-    @classmethod
-    def ccw(cls, A, B, C):
-        return (C.y - A.y) * (B.x - A.x) > (B.y - A.y) * (C.x - A.x)
-
-    # Return true if line segments AB and CD intersect
-    @classmethod
-    def intersect(cls, A, B, C, D):
-        return cls.ccw(A, C, D) != cls.ccw(B, C, D) and cls.ccw(A, B, C) != cls.ccw(A, B, D)
 
     @classmethod
     def on_segment(cls, p, q, r):
@@ -199,17 +197,12 @@ if __name__ == "__main__":
         if line.is_one_sided():
             lines.append(Line(level_1.vertices[line.a], level_1.vertices[line.b], True))
 
-            # print lines[-1]
-
     lines_x = []
     lines_y = []
     for line in lines:
         lines_x.extend([line.a.x, line.b.x])
         lines_y.extend([line.a.y, line.b.y])
 
-    MAP_WIDTH = ((min(lines_x)), max(lines_x))
-    MAP_HEIGHT = ((min(lines_y)), max(lines_y))
-    # print MAP_HEIGHT, MAP_WIDTH
     helper = Helper()
     start_pos = [1056, -3516]
     vertex_length = 70
@@ -219,30 +212,11 @@ if __name__ == "__main__":
     graph = Graph()
     graph.append_node(init_node)
     my_lines, all_nodes, all_vertices = helper.map_out_graph(init_node, lines, vertex_length, graph, Directions.SOUTH)
-    print all_nodes
     agent = Agent()
-    # init = Node(1, 1)
-    # goal = Node(4, 7)
-    # # all_nodes = [init, Node(1, 2), Node(1, 3), Node(2, 1), Node(2, 2), Node(2, 3), Node(3, 3), Node(3, 4), Node(2, 4),
-    # #              Node(2, 5), Node(2, 6), Node(2, 7), Node(1, 7), Node(3, 7), Node(4, 7), Node(4, 6), Node(4, 5),
-    # #              Node(4, 4), goal]
-    #
-    #
-    agent.get_state_space(all_nodes, all_nodes[0], all_nodes[(len(all_nodes)/2)+250], vertex_length)
+    agent.get_state_space(all_nodes, all_nodes[0], all_nodes[(len(all_nodes) / 2) + 250], vertex_length, all_vertices,
+                          lines)
     (solution_path, start_location, goal_location, maze_map_locations) = agent.find_solution_path()
     print solution_path
 
     solution_path = [Node(int(el.state.split(" | ")[0]), int(el.state.split(" | ")[1])) for el in solution_path]
     level_1.save_svg(my_lines, my_path=solution_path)
-    # line_1 = Line([0, 0], [5, 5], True)
-    node_1 = Node(init_node.x, init_node.y + vertex_length)
-    node_2 = Node(init_node.x, init_node.y + vertex_length)
-    # node_3 = Node(5, 3)
-    # node_4 = Node(6, 4)
-    # node_5 = Node(5, 6)
-    # node_6 = Node(7, 5)
-    # node_7 = Node(5, 7)
-
-    # print Helper.is_node_reachable(Vertex(init_node, node_1), lines)
-
-    # print len(lines)
