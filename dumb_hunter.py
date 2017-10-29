@@ -18,6 +18,33 @@ def sendAction(objectName, payload):
     url = 'http://{}:{}/api/{}/actions'.format(RESTFUL_HOST, RESTFUL_PORT, objectName)
     logging.debug('Calling {} with payload {}'.format(url, payload))
     try:
+        response = requests.post(url, json=payload)
+        print response.status_code
+        return True
+    except:
+        logging.error('POST API call failed')
+        return False
+
+def get_doors():
+    global RESTFUL_HOST
+    global RESTFUL_PORT
+
+    url = 'http://{}:{}/api/{}/doors'.format(RESTFUL_HOST, RESTFUL_PORT, "world")
+    try:
+        response = requests.get(url)
+        print response
+        return response._content
+    except:
+        logging.error('POST API call failed')
+        return False
+
+def sendSpin(objectName, payload):
+    global RESTFUL_HOST
+    global RESTFUL_PORT
+
+    url = 'http://{}:{}/api/{}'.format(RESTFUL_HOST, RESTFUL_PORT, objectName)
+    logging.debug('Calling {} with payload {}'.format(url, payload))
+    try:
         requests.post(url, json=payload)
         return True
     except:
@@ -25,9 +52,27 @@ def sendAction(objectName, payload):
         return False
 
 
+def spin_amount(current, destination):
+    xdif = destination[0] - current[0]
+    ydif = destination[1] - current[1]
+
+    tan = math.atan2(ydif, xdif)
+    tan = math.degrees(tan)
+
+    spinAmount = tan
+    # print spinAmount
+    spinPlayer(spinAmount)
+
+
+def spinPlayer(amount):
+    if amount < 0:
+        amount = 360 - abs(amount)
+        print amount
+    sendSpin('player/turn', {"type": "right", "target_angle": amount})
+
+
 def get_position():
     currentData = getAction('player')
-
     return (currentData["position"]["x"], currentData["position"]["y"])
 
 
@@ -46,14 +91,15 @@ def getAction(objectName):
         return None
 
 
-def spinPlayer(amount):
-    if amount < 0:
-        actionType = "turn-left"
-        amount = abs(amount)
-    else:
-        actionType = "turn-right"
-
-    sendAction('player', {'type': actionType, 'amount': amount})
+#
+# def spinPlayer(amount):
+#     if amount < 0:
+#         actionType = "turn-left"
+#         amount = abs(amount)
+#     else:
+#         actionType = "turn-right"
+#
+#     sendAction('player', {'type': actionType, 'amount': amount})
 
 
 def movePlayer(amount):
@@ -65,6 +111,9 @@ def movePlayer(amount):
 
     sendAction('player', {'type': actionType, 'amount': amount})
 
+def movePlayerDir(amount, direction):
+
+    sendAction('player', {'type': direction, 'amount': amount})
 
 def shoot():
     sendAction('player', {'type': 'shoot'})

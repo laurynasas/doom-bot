@@ -18,6 +18,7 @@ class Line:
         self.a = self.Point(*a)
         self.b = self.Point(*b)
         self.one_sided = one_sided
+        self.is_door = None
 
     def __str__(self):
         return str(self.a.x) + " " + str(self.a.y) + "; " + str(self.b.x) + " " + str(self.b.y)
@@ -53,6 +54,15 @@ class Helper:
             vector_2 = [abs(vertex.start_node.x - vertex.end_node.x), abs(vertex.start_node.y - vertex.end_node.y)]
             if (vector_1[0] - vector_2[0] == 0) and (vector_1[1] - vector_2[1] == 0):
                 print "exists"
+                return True
+        return False
+
+    @staticmethod
+    def line_is_in_doors(line, door_lines, level_data):
+        their_line_in_our = Line([level_data.vertices[line.a][0], level_data.vertices[line.a][1]],
+                                 [level_data.vertices[line.b][0], level_data.vertices[line.b][1]], False)
+        for our_line in door_lines:
+            if their_line_in_our.a.x == our_line.a.x and their_line_in_our.a.y == our_line.a.y and their_line_in_our.b.x == our_line.b.x and their_line_in_our.b.y == our_line.b.y:
                 return True
         return False
 
@@ -175,17 +185,24 @@ class Graph:
                 break
         return is_mapped
 
+def get_distance_between_nodes(a,b):
+    return math.hypot(a.x - b.x, a.y - b.y)
 
 def enum(**enums):
     return type('Enum', (), enums)
-
-
 
 
 if __name__ == "__main__":
 
     from mapper import Wad
     from seearch_the_graph import Agent
+    from dumb_hunter import get_doors,movePlayerDir
+    import math
+    import time
+
+    RESTFUL_HOST = "localhost"
+    RESTFUL_PORT = 6666
+    from dumb_hunter import movePlayer, get_position, spin_amount, get_doors
 
     wad = Wad("./Doom1.WAD")
     level_1 = wad.levels[0]
@@ -194,10 +211,39 @@ if __name__ == "__main__":
     lines = []
 
     Directions = enum(NORTH=0, WEST=1, EAST=2, SOUTH=3)
+    import json
 
+    door_lines = []
+    all_door_coord = get_doors()
+    for door_info in json.loads(all_door_coord):
+        door_line = door_info["line"]
+        line_points = []
+
+        for point in door_line:
+            point_obj = door_line[point]
+            x = point_obj[u'x']
+            y = point_obj[u'y']
+            line_points.append([x, y])
+        door_lines.append(Line(line_points[0], line_points[1], False))
+    helper = Helper()
+
+    goal_line = None
+
+    print door_lines
     for line in level_1.lines:
-        if line.is_one_sided():
-            lines.append(Line(level_1.vertices[line.a], level_1.vertices[line.b], True))
+        # if line.is_one_sided() or line.block_players_and_monsters:
+        #     grey_black_line = Line(level_1.vertices[line.a], level_1.vertices[line.b], True)
+        #     grey_black_line.is_door = False
+        #     lines.append(grey_black_line)
+        #
+        if line.exit:
+            goal_line = Line(level_1.vertices[line.a], level_1.vertices[line.b], True)
+        if not line.block_players_and_monsters:
+            boundary_line = Line(level_1.vertices[line.a], level_1.vertices[line.b], True)
+            lines.append(boundary_line)
+        if not line.block_monsters:
+            boundary_line = Line(level_1.vertices[line.a], level_1.vertices[line.b], True)
+            lines.append(boundary_line)
 
     lines_x = []
     lines_y = []
@@ -205,27 +251,124 @@ if __name__ == "__main__":
         lines_x.extend([line.a.x, line.b.x])
         lines_y.extend([line.a.y, line.b.y])
 
-    helper = Helper()
     start_pos = [1056, -3616]
     vertex_length = 70
     player = Player(*start_pos)
     init_node = Node(player.x, player.y)
+    goal_node = Node(goal_line.a.x, goal_line.a.y)
+
 
     graph = Graph()
     graph.append_node(init_node)
     my_lines, all_nodes, all_vertices = helper.map_out_graph(init_node, lines, vertex_length, graph, Directions.SOUTH)
     agent = Agent()
-    agent.get_state_space(all_nodes, all_nodes[0], all_nodes[(len(all_nodes) / 2) + 250], vertex_length,
+    # all_nodes.append(goal_node)
+    closest_node = all_nodes[0]
+    min = get_distance_between_nodes(all_nodes[0], goal_node)
+
+    # print '------------------------------------', min
+    for node in all_nodes[1:]:
+        if get_distance_between_nodes(node, goal_node) <= min:
+            closest_node = node
+            min = get_distance_between_nodes(node, goal_node)
+
+
+    agent.get_state_space(all_nodes, all_nodes[0], closest_node, vertex_length,
                           lines)
     (solution_path, start_location, goal_location, maze_map_locations) = agent.find_solution_path()
     print solution_path
 
-    solution_path = [Node(int(el.state.split(" | ")[0]), int(el.state.split(" | ")[1])) for el in solution_path]
+    solution_coords = [(int(el.state.split(" | ")[0]), int(el.state.split(" | ")[1])) for el in solution_path]
 
+    solution_path = [Node(int(el.state.split(" | ")[0]), int(el.state.split(" | ")[1])) for el in solution_path]
+    #
     write_to = open("solution_path.txt", 'w')
 
     with write_to:
         for node in solution_path:
             write_to.write(str(node) + "\n")
 
-    level_1.save_svg(my_lines, my_path=solution_path)
+    level_1.save_svg(my_lines, my_path=solution_path, our_lines=lines)
+    #
+    #
+    #
+
+    init_postion = get_position()
+    print init_postion
+    # solution_coords = []
+    # input = open("solution_path.txt", 'r')
+    # with input:
+    #     for line in input.readlines():
+    #         solution_coords.append((float(line.split(" | ")[0]), float(line.split(" | ")[1])))
+
+
+
+
+
+
+
+
+
+    #
+    solution_coords.reverse()
+    # solution_coords = [(el[0], el[1]) for el in solution_coords]
+    current_cord = solution_coords[0]
+    radius = 20
+    for index, next_coord in enumerate(solution_coords[1:]):
+        print "I was here:", current_cord, " and will be going to: ", next_coord
+        position = get_position()
+
+        # if index == 4:
+        # print "Have turned"
+        spin_amount(position, next_coord)
+
+        # all_door_coord = get_doors()
+        # for door_info in all_door_coord:
+        #     door_line = door_info["line"]
+        #     for point in door_line:
+        #         point_obj = door_line[point]
+        #         line_points = []
+        #         for coord in point_obj:
+        #             x = coord['x']
+        #             y = coord['y']
+        #             line_points.append(Line.Point(x, y))
+        #     door_lines.append(Line(line_points[0], line_points[1], False))
+        # print door_lines
+
+        # time.sleep(2)
+        previous_position = position
+        counter = 0
+        while math.hypot(next_coord[0] - position[0], next_coord[1] - position[1]) > float(radius):
+            movePlayer(2)
+            time.sleep(0.3)
+            print "Distance to point", math.hypot(next_coord[0] - position[0], next_coord[1] - position[1])
+            # time.sleep(1)
+            position = get_position()
+            print "my position:", position
+
+            if abs(math.sqrt( (previous_position[0] - position[0])**2 + (previous_position[1] - position[1])**2)) <1 :
+                counter +=1
+                if counter >3:
+                    movePlayerDir(10,"strafe-right")
+                    counter = 0
+            previous_position = position
+        print "Got to a point"
+
+        current_cord = next_coord
+
+
+
+
+
+
+
+
+
+
+
+        # current_cord = next_coord
+        # url = 'http://{}:{}/api/player/actions'.format(RESTFUL_HOST, RESTFUL_PORT)
+        # payload = {"type": "forward", "amount": 100}
+        # logging.warn('Calling {} with payload {}'.format(url, payload))
+        # response = requests.post(url)
+        # response.status_code

@@ -80,7 +80,7 @@ class Level(object):
         for data in packets_of_size(packet_size, self.lumps['LINEDEFS']):
             self.lines.append(Line(data))
 
-    def save_svg(self, my_lines, my_path):
+    def save_svg(self, my_lines, my_path, our_lines):
         """ Scale the drawing to fit inside a 1024x1024 canvas (iPhones don't like really large SVGs even if they have the same detail) """
         import svgwrite
         view_box_size = self.normalize(self.upper_right, 10)
@@ -96,10 +96,30 @@ class Level(object):
             a = self.normalize(self.vertices[line.a])
             # print type(self.vertices[line.a])
             b = self.normalize(self.vertices[line.b])
-            if line.is_one_sided():
-                dwg.add(dwg.line(a, b, stroke='#333', stroke_width=5))
+
+            if line.block_players_and_monsters:
+                # dwg.add(dwg.line(a, b, stroke='#ff0000', stroke_width=5))
+                pass
             else:
                 dwg.add(dwg.line(a, b, stroke='#999', stroke_width=2))
+
+            if not line.block_monsters:
+                dwg.add(dwg.line(a, b, stroke='#751', stroke_width=2))
+            if line.exit:
+                dwg.add(dwg.line(a, b, stroke='#444', stroke_width=10))
+
+
+
+                # for line in our_lines:
+                #     a = self.normalize((line.a.x, line.a.y))
+                #     # print type(self.vertices[line.a])
+                #     b = self.normalize((line.b.x, line.b.y))
+                #     dwg.add(dwg.line(a, b, stroke='#333', stroke_width=5))
+
+                # if line.is_one_sided():
+                #     dwg.add(dwg.line(a, b, stroke='#333', stroke_width=5))
+                # else:
+                #     dwg.add(dwg.line(a, b, stroke='#999', stroke_width=2))
 
         for a in my_path:
             # print len(my_lines)
@@ -125,6 +145,12 @@ class Line(object):
     def __init__(self, data):
         self.a, self.b = struct.unpack('<hh', data[0:4])
         self.left_side, self.right_side = struct.unpack('<hh', data[-4:])
+        self.flags = struct.unpack('<h', data[4:6])
+        self.block_players_and_monsters = True if self.flags[0] & 0x0001 == 0 else False
+        self.block_monsters = True if self.flags[0] & 0x0002 == 0 else False
+        self.special_type = struct.unpack('<h', data[6:8])
+        # print self.special_type
+        self.exit = True if self.special_type[0] == 11 else False
 
     def is_one_sided(self):
         return self.left_side == -1 or self.right_side == -1
@@ -143,7 +169,7 @@ if __name__ == "__main__":
     wad = Wad("./Doom1.WAD")
     level_1 = wad.levels[0]
     svg_name = level_1.name
-    level_1.save_svg()
+    # level_1.save_svg()
     svg_file = open(svg_name + ".svg")
 
     print "Have the image ====="
@@ -171,19 +197,6 @@ if __name__ == "__main__":
     img = Image.open(svg_name + ".png").convert('RGB')
     arr = np.array(img)
 
-
-    # new_arr = np.zeros((arr.shape[0], arr.shape[1]), dtype=np.int8)
-    # counter = 0
-    # for i,el in enumerate(arr):
-    #     for j,ell in enumerate(el):
-    #         counter += 1
-    #         if counter %100000 == 0:
-    #             print counter
-    #         # print str(list(ell))
-    #         # print str([0, 0, 0])
-    #         if str(list(ell)) == str([120, 120, 120]) or str(list(ell)) == str([140, 140, 140]):
-    #             ell = np.array([153,153,153])
-    #         new_arr[i,j] = colours[str(list(ell))]
-    #         # np.put(arr, [i,j], colours[str(list(ell))])
-    #         # print new_arr[i,j], arr[i,j]
-    # print new_arr
+    RESTFUL_HOST = "localhost"
+    RESTFUL_PORT = 6666
+    from graph import Line
